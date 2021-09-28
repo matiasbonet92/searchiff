@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Route , Link } from 'wouter';
+import Home from './pages/Home';
+import SearchResults from './pages/Search Results'
+import logo from './images/searchiffy-logo.png'
 
-function App() {
+export default function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-header">
+        <Link to="/">
+          <img alt="logo" className="logo" src={logo} />
+        </Link>
+      </div>
+      <div className="App-content">
+        <Route 
+          component={Home}
+          path='/' 
+        />
+        <Route 
+          component={SearchResults}
+          path='/search/:keyword' 
+        />
+      </div>
     </div>
   );
 }
-
-export default App;
